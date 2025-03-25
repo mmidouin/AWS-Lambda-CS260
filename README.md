@@ -1,53 +1,83 @@
+# Creating a Lambda Function for Todo Tasks Application
+
+## Overview
+This guide will walk you through creating an AWS Lambda function for a Todo Tasks application, with a focus on setup and DynamoDB integration.
+
 ## Step 1: Creating a Lambda Function
-To create an AWS Lambda function, follow these steps:
-1. Go to the AWS Management Console.
-2. Navigate to **Lambda** under Services.
-3. Click **Create function**.
-4. Choose **Author from scratch**.
-5. Provide a function name (e.g., `TodoTasksLambda`).
-6. Choose **Node.js** as the runtime.
-7. Click **Create function**.
 
-Your Lambda function is now created! To upload the code, click on the **Code** tab to use the **Inline Editor**.
+1. **Open AWS Lambda Console**
+   * Navigate to https://console.aws.amazon.com/lambda/
+   * Click **Create function**
 
-## Step 2: Setting up HTTP Endpoints with HTTP Headers
-Configure AWS Lambda to handle HTTP requests through API Gateway:
-1. Go to the **API Gateway** console.
-2. Click **Create API** and choose **HTTP API**.
-3. Define your HTTP API by providing the API name and selecting the region.
-4. Under **Routes**, click **Create** and define routes like:
+2. **Configure Function Basics**
+   * Choose **Create function**
+   * Select **Author from scratch**
+   * Provide a **Function name** (e.g., `TodoTasksFunction`)
+   * Select **Node.js** as the runtime
+   * Click **Create function**
+
+## Step 2: Setting Up HTTP Endpoints with API Gateway
+1. Go to the **API Gateway** console
+2. Click **Create API** and choose **HTTP API**
+3. Define your HTTP API by providing the API name and selecting the region
+4. Create routes for your Todo Tasks application:
    - `GET /tasks`
    - `POST /tasks`
    - `PUT /tasks/{taskId}`
    - `DELETE /tasks/{taskId}`
-5. Link each route to your Lambda function.
-6. Configure HTTP headers in the Lambda function code.
-7. Deploy your API by clicking **Deploy**.
+5. Link each route to your Lambda function
+6. **Deployment Clarification**:
+   * When you first create an API Gateway, a default stage named `$default` is automatically created and deployed
+   * If you want a named stage (like `prod` or `dev`), you'll need to manually click **Deploy** and create a new stage
+   * For most initial setups, the default stage is sufficient for testing
 
-## Step 3: Connecting to DynamoDB
-### Step 3.1: Set Up DynamoDB Table
-1. Navigate to the **DynamoDB** console.
-2. Click **Create table**.
+## Step 3: Configuring CORS (Cross-Origin Resource Sharing)
+1. In the API Gateway Console, select your HTTP API
+2. Go to the **CORS** section
+3. Configure CORS settings:
+   * **Access-Control-Allow-Origin**: 
+     - For development: Use `*` to allow all origins
+     - For production: Specify exact origin(s), e.g., `https://yourdomain.com`
+   * **Access-Control-Allow-Headers**: 
+     - Minimum recommended: `Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token`
+   * **Access-Control-Allow-Methods**: 
+     - Select the HTTP methods you've defined: 
+       * `GET`
+       * `POST`
+       * `PUT`
+       * `DELETE`
+       * `OPTIONS`
+4. Update the Lambda function to include CORS headers in the response:
+
+```javascript
+const headers = {
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*', // Or your specific domain
+    'Access-Control-Allow-Headers': 'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token',
+    'Access-Control-Allow-Methods': 'OPTIONS,GET,POST,PUT,DELETE'
+};
+```
+
+## Step 4: Connecting to DynamoDB
+
+### 4.1 Create DynamoDB Table
+1. Navigate to the **DynamoDB** console
+2. Click **Create table**
 3. Set the following table details:
    - **Table name**: `ToDoTasks`
    - **Partition key**: `taskId` (String)
    - **Sort key**: (Optional) Leave blank if not needed
-4. Click **Create** to create the table.
+4. Click **Create** to create the table
 
-### Step 3.2: Set Up IAM Role for Lambda to Access DynamoDB
-1. Create or use an existing **IAM Role** for your Lambda function.
-2. Attach the `AmazonDynamoDBFullAccess` policy or create a custom policy with specific DynamoDB permissions.
-3. Attach the IAM role to your Lambda function.
-
-### Step 3.3: Store DynamoDB Table Information in Lambda
-Store your DynamoDB table name in **Lambda Environment Variables**:
-1. Go to the **Lambda console**.
+### 4.2 Configure Lambda Environment Variables
+1. Go to the **Lambda console**
 2. In the **Configuration** tab, under **Environment variables**, add:
-   - **Key**: `DYNAMO_TABLE_NAME`
+   - **Key**: `TABLE_NAME`
    - **Value**: `ToDoTasks`
 
-## Step 3.4: Setting Up DynamoDB Access in Lambda
-Use the AWS SDK to interact with DynamoDB. Here's an example Lambda function:
+## Step 5: Lambda Function Code
+
+Use the provided Lambda function code to handle DynamoDB operations:
 
 ```javascript
 import { DynamoDB } from '@aws-sdk/client-dynamodb';
@@ -148,8 +178,27 @@ export const handler = async (event) => {
 };
 ```
 
-### Table Structure for ToDoTasks
-- `taskId` (String): Timestamp of task creation, used as a unique identifier
+## CORS Best Practices
+* In development, `*` can be used for all origins
+* In production, always specify exact allowed origins
+* Be as restrictive as possible with allowed origins
+* Include only necessary headers and methods
+* Consider using environment variables for origin domains to make configuration easier
+
+## Troubleshooting CORS
+* If requests are blocked, check:
+  - CORS settings in API Gateway
+  - Lambda function response headers
+  - Browser console for specific CORS error messages
+
+## DynamoDB Table Structure
+- `taskId` (String): Unique identifier for the task
 - `task` (String): Description of the task
 - `completed` (Boolean): Task completion status
-- `createdAt` (String): Timestamp of task creation (same as taskId)
+- `createdAt` (String): Timestamp of task creation
+
+## Tips for Success
+* Verify the function's basic configuration after creation
+* Test each API endpoint thoroughly
+* Ensure your Lambda function has the necessary permissions to interact with DynamoDB
+* Monitor CloudWatch logs for any potential issues
