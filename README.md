@@ -32,8 +32,9 @@ This guide will walk you through creating an AWS Lambda function for the Todo Ta
 4. Create routes for your Todo Tasks application:
    - `GET /tasks`
    - `POST /tasks`
-   - `PUT /tasks/{taskId}`
-   - `DELETE /tasks/{taskId}`
+   - `PUT /tasks`
+   - `DELETE /tasks`
+   - `GET /tasks/{taskId}`
 5. Link each route to your Lambda function
 6. **Deployment Clarification**:
    * When you first create an API Gateway, a default stage named `$default` is automatically created and deployed
