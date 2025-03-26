@@ -1,7 +1,7 @@
 # Creating a Lambda Function for Todo Tasks Application
 
 ## Overview
-This guide will walk you through creating an AWS Lambda function for a Todo Tasks application, with a focus on setup and DynamoDB integration.
+This guide will walk you through creating an AWS Lambda function for the Todo Tasks application, with a focus on setup and DynamoDB integration.
 
 ## Step 1: Creating a Lambda Function
 
@@ -14,6 +14,15 @@ This guide will walk you through creating an AWS Lambda function for a Todo Task
    * Select **Author from scratch**
    * Provide a **Function name** (e.g., `TodoTasksFunction`)
    * Select **Node.js** as the runtime
+
+3. **Configure Permissions**
+   * Under the **Permissions** section, choose **Change default execution role**
+   * Select **Create a new role from AWS policy templates**
+
+4. **Set Up IAM Role**
+   * For **Role name**, enter a descriptive name (e.g., `TodoTasksLambdaRole`)
+   * For **Policy templates**, choose **Simple microservice permissions**
+     * This provides basic access to interact with DynamoDB and create CloudWatch Logs
    * Click **Create function**
 
 ## Step 2: Setting Up HTTP Endpoints with API Gateway
