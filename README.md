@@ -191,6 +191,11 @@ export const handler = async (event) => {
 };
 ```
 
+
+## Step 6: Testing Your Lambda Function Code
+```
+  "body": "{\"taskId\": \"123\", \"task\": \"Finish homework\", \"completed\": false}",
+```
 ## CORS Best Practices
 * In development, `*` can be used for all origins
 * In production, always specify exact allowed origins
