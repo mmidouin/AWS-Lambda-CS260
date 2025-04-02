@@ -35,8 +35,11 @@ This guide will walk you through creating an AWS Lambda function for the Todo Ta
    - `PUT /tasks`
    - `DELETE /tasks`
    - `GET /tasks/{taskId}`
-5. Link each route to your Lambda function
-6. **Deployment Clarification**:
+5. Link each route to your Lambda function:  
+   - Navigate to **Integrations** and click **Create and attach an integration**.  
+   - Select **Lambda function** as the integration type.  
+   - Choose your existing Lambda function.  
+   - After creating the integration once, reuse it for the other routes by selecting **Choose an existing integration** instead of creating a new one.  6. **Deployment Clarification**:
    * When you first create an API Gateway, a default stage named `$default` is automatically created and deployed
    * If you want a named stage (like `prod` or `dev`), you'll need to manually click **Deploy** and create a new stage
    * For most initial setups, the default stage is sufficient for testing
