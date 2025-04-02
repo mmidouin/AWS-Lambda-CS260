@@ -67,7 +67,7 @@ const headers = {
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*', // Or your specific domain
     'Access-Control-Allow-Headers': 'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token',
-    'Access-Control-Allow-Methods': 'OPTIONS,GET,POST,PUT,DELETE'
+    'Access-Control-Allow-Methods': 'GET,POST,PUT,DELETE'
 };
 ```
 
