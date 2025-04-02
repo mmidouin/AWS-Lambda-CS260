@@ -60,7 +60,6 @@ This guide will walk you through creating an AWS Lambda function for the Todo Ta
        * `POST`
        * `PUT`
        * `DELETE`
-       * `OPTIONS`
 4. Update the Lambda function to include CORS headers in the response:
 
 ```javascript
