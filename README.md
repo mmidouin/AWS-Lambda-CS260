@@ -25,6 +25,12 @@ This guide will walk you through creating an AWS Lambda function for the Todo Ta
      * This provides basic access to interact with DynamoDB and create CloudWatch Logs
    * Click **Create function**
 
+
+## Demo Video
+
+[![Demo Video](lambda-step1-img)](https://drive.google.com/file/d/1zWloSZZii7fXDqCn2_ULG_fe8Lor04VA/view?usp=sharing)
+
+---
 ## Step 2: Setting Up HTTP Endpoints with API Gateway
 1. Go to the **API Gateway** console
 2. Click **Create API** and choose **HTTP API**
@@ -44,6 +50,12 @@ This guide will walk you through creating an AWS Lambda function for the Todo Ta
    * When you first create an API Gateway, a default stage named `$default` is automatically created and deployed
    * If you want a named stage (like `prod` or `dev`), you'll need to manually click **Deploy** and create a new stage
    * For most initial setups, the default stage is sufficient for testing
+
+## Demo Video
+
+[![Demo Video](lambda-step2-img)](https://drive.google.com/file/d/1yN4No_nR6TWm7V-SeN9xMCq8sg5TrEq5/view?usp=sharing)
+
+---
 
 ## Step 3: Configuring CORS (Cross-Origin Resource Sharing)
 1. In the API Gateway Console, select your HTTP API
@@ -71,6 +83,12 @@ const headers = {
 };
 ```
 
+## Demo Video
+
+[![Demo Video](lambda-step3-img)](https://drive.google.com/file/d/1Tou69B3RJEhVmW7HIe5Xy2x20eq0X8J8/view?usp=sharing)
+
+---
+
 ## Step 4: Connecting to DynamoDB
 
 ### 4.1 Create DynamoDB Table
@@ -87,6 +105,13 @@ const headers = {
 2. In the **Configuration** tab, under **Environment variables**, add:
    - **Key**: `TABLE_NAME`
    - **Value**: `ToDoTasks`
+
+
+## Demo Video
+
+[![Demo Video](lambda-step4-img)](https://drive.google.com/file/d/1nEsbTJTXM5K9l4XKIKGQ3OefgKt-Tuhr/view?usp=sharing)
+
+---
 
 ## Step 5: Lambda Function Code
 
@@ -191,6 +216,11 @@ export const handler = async (event) => {
 };
 ```
 
+## Demo Video
+
+[![Demo Video](lambda-step5-img)](https://drive.google.com/file/d/1TfFVmSnpUs4beVIvXIpy94sZ-bfJ1iwD/view?usp=sharing)
+
+---
 
 ## Step 6: Testing Your Lambda Function Code
 ```
@@ -220,3 +250,9 @@ export const handler = async (event) => {
 * Test each API endpoint thoroughly
 * Ensure your Lambda function has the necessary permissions to interact with DynamoDB
 * Monitor CloudWatch logs for any potential issues
+
+## Demo Video
+
+[![Demo Video](lambda-step6-img)](https://drive.google.com/file/d/1xEQlN-xKs3Xknkg-4j4aVTgX54G8vKfR/view?usp=sharing)
+
+---
