@@ -28,7 +28,7 @@ This guide will walk you through creating an AWS Lambda function for the Todo Ta
 
 ## Demo Video
 
-[![Demo Video](lambda-step1-img)](https://drive.google.com/file/d/1zWloSZZii7fXDqCn2_ULG_fe8Lor04VA/view?usp=sharing)
+[![Demo Video](lambda-step1-img.png)](https://drive.google.com/file/d/1zWloSZZii7fXDqCn2_ULG_fe8Lor04VA/view?usp=sharing)
 
 ---
 ## Step 2: Setting Up HTTP Endpoints with API Gateway
@@ -53,7 +53,7 @@ This guide will walk you through creating an AWS Lambda function for the Todo Ta
 
 ## Demo Video
 
-[![Demo Video](lambda-step2-img)](https://drive.google.com/file/d/1yN4No_nR6TWm7V-SeN9xMCq8sg5TrEq5/view?usp=sharing)
+[![Demo Video](lambda-step2-img.png)](https://drive.google.com/file/d/1yN4No_nR6TWm7V-SeN9xMCq8sg5TrEq5/view?usp=sharing)
 
 ---
 
@@ -85,7 +85,7 @@ const headers = {
 
 ## Demo Video
 
-[![Demo Video](lambda-step3-img)](https://drive.google.com/file/d/1Tou69B3RJEhVmW7HIe5Xy2x20eq0X8J8/view?usp=sharing)
+[![Demo Video](lambda-step3-img.png)](https://drive.google.com/file/d/1Tou69B3RJEhVmW7HIe5Xy2x20eq0X8J8/view?usp=sharing)
 
 ---
 
@@ -109,7 +109,7 @@ const headers = {
 
 ## Demo Video
 
-[![Demo Video](lambda-step4-img)](https://drive.google.com/file/d/1nEsbTJTXM5K9l4XKIKGQ3OefgKt-Tuhr/view?usp=sharing)
+[![Demo Video](lambda-step4-img.png)](https://drive.google.com/file/d/1nEsbTJTXM5K9l4XKIKGQ3OefgKt-Tuhr/view?usp=sharing)
 
 ---
 
@@ -218,7 +218,7 @@ export const handler = async (event) => {
 
 ## Demo Video
 
-[![Demo Video](lambda-step5-img)](https://drive.google.com/file/d/1TfFVmSnpUs4beVIvXIpy94sZ-bfJ1iwD/view?usp=sharing)
+[![Demo Video](lambda-step5-img.png)](https://drive.google.com/file/d/1TfFVmSnpUs4beVIvXIpy94sZ-bfJ1iwD/view?usp=sharing)
 
 ---
 
@@ -253,6 +253,6 @@ export const handler = async (event) => {
 
 ## Demo Video
 
-[![Demo Video](lambda-step6-img)](https://drive.google.com/file/d/1xEQlN-xKs3Xknkg-4j4aVTgX54G8vKfR/view?usp=sharing)
+[![Demo Video](lambda-step6-img.png)](https://drive.google.com/file/d/1xEQlN-xKs3Xknkg-4j4aVTgX54G8vKfR/view?usp=sharing)
 
 ---
