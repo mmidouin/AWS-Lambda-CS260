@@ -226,6 +226,12 @@ export const handler = async (event) => {
 ```
   "body": "{\"taskId\": \"123\", \"task\": \"Finish homework\", \"completed\": false}",
 ```
+
+## Demo Video
+
+[![Demo Video](lambda-step6-img.png)](https://drive.google.com/file/d/1xEQlN-xKs3Xknkg-4j4aVTgX54G8vKfR/view?usp=sharing)
+
+---
 ## CORS Best Practices
 * In development, `*` can be used for all origins
 * In production, always specify exact allowed origins
@@ -251,8 +257,3 @@ export const handler = async (event) => {
 * Ensure your Lambda function has the necessary permissions to interact with DynamoDB
 * Monitor CloudWatch logs for any potential issues
 
-## Demo Video
-
-[![Demo Video](lambda-step6-img.png)](https://drive.google.com/file/d/1xEQlN-xKs3Xknkg-4j4aVTgX54G8vKfR/view?usp=sharing)
-
----
